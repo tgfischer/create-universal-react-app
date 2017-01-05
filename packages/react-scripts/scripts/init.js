@@ -41,7 +41,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory) {
   }
 
   // Copy the files for the user
-  fs.copySync(path.join(ownPath, 'template'), appPath);
+  fs.copySync(path.join(ownPath, 'kununu', 'template'), appPath);
 
   // Rename gitignore after the fact to prevent npm from renaming it to .npmignore
   // See: https://github.com/npm/npm/issues/1862

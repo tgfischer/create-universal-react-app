@@ -1,0 +1,22 @@
+{
+  "routesFile": "./routes.json",
+  "webpackClientConfig": "./config/webpack.client.config.js",
+  "webpackServerConfig": "./config/webpack.server.config.js",
+  "host": "localhost",
+  "port": 3000,
+  "jsPort": 3001,
+  "hot": false,
+  "minify": false,
+  "longTermCaching": false,
+  "compileOnly": false,
+  "https": false,
+  "logLevel": "debug",
+  "env": {
+    "staging": {
+      "port": "4000"
+    },
+    "production": {
+       "port": "80"
+    }
+  }
+}
