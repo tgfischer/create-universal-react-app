@@ -1,31 +1,16 @@
-const path = require("path");
-const externals = require("../utils/webpack/externals");
+const patchExternals = require("../utils/webpack/patchExternals");
+const patchLoaderIncludes = require("../utils/webpack/patchLoaderIncludes");
+const patchResolve = require("../utils/webpack/patchResolve");
+const patchBabelLoader = require("../utils/webpack/patchBabelLoader");
 
-module.exports = {
-    default: function (webpackConfig) {
-        const babelLoader = webpackConfig.module.loaders[0];
-        
-        webpackConfig.module.loaders.forEach(loader => {
-            delete loader.exclude;
-            if (/^json/.test(loader.loader)) {
-                return;
-            }
-            loader.include = [
-                path.dirname(require.resolve("@kununu/example-review-module"))
-            ];
-        });
-        
-        webpackConfig.externals = externals;
-        
-        if (/^babel/.test(babelLoader.loader) === false) {
-            throw new Error("babel-loader not found in webpack.config");
-        }
-        babelLoader.query = {
-            "presets": ["react-server"]
-        };
-        
-        //console.log("server config", webpackConfig);
+function webpackServerConfig(webpackConfig) {
+    
+    patchExternals(webpackConfig);
+    patchLoaderIncludes(webpackConfig);
+    patchBabelLoader(webpackConfig);
+    patchResolve(webpackConfig);
+    
+    return webpackConfig;
+}
 
-        return webpackConfig;
-    }
-};
+module.exports = webpackServerConfig;

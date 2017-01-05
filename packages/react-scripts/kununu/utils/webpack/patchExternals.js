@@ -1,5 +1,7 @@
 // Based on react-server's implementation
 const fs = require("fs");
+const path = require("path");
+const matchAppModules = require("./matchAppModules");
 
 // Used with packing modules for Node
 const nodeModules = {};
@@ -13,7 +15,7 @@ fs.readdirSync("node_modules")
         nodeModules[mod] = true;
     });
 
-function webpackExternals(context, request, callback) {
+function externals(context, request, callback) {
     let absoluteRequest;
     if (/^\./.test(request)) {
         // this is a relative pathname
@@ -35,7 +37,7 @@ function webpackExternals(context, request, callback) {
 
     // Match for root modules that are in our node_modules except Webpack.
     // Because Webpack uses relative pathnames for itself, let's just bundle Webpack
-    if (rootModuleName !== "webpack" && nodeModules.hasOwnProperty(rootModuleName) && /@kununu/.test(absoluteRequest) === false) {
+    if (rootModuleName !== "webpack" && nodeModules.hasOwnProperty(rootModuleName) && matchAppModules().test(absoluteRequest) === false) {
         // This is in our node_modules, so we can safely list it as external
         callback(null, "commonjs " + request);
     } else {
@@ -44,4 +46,8 @@ function webpackExternals(context, request, callback) {
     }
 }
 
-module.exports = webpackExternals;
+function patchExternals(webpackConfig) {
+    webpackConfig.externals = externals;
+}
+
+module.exports = patchExternals;
