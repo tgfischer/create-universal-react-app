@@ -5,8 +5,10 @@ var args = process.argv.slice(3);
 
 switch (script) {
 case 'build':
-case 'eject':
 case 'start':
+  require('../kununu/scripts/' + script);
+  break;
+case 'eject':
 case 'test':
   var result = spawn.sync(
     'node',
