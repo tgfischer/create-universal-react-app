@@ -3,7 +3,7 @@ const webpackClientConfig = require("@kununu/react-universal-scripts/kununu/conf
 module.exports = {
     default(webpackConfig) {
         webpackClientConfig(webpackConfig);
-        
+
         return webpackConfig;
     }
 };
