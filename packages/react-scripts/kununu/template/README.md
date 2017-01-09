@@ -1,7 +1,6 @@
 # react-server-examples/hello-world
 
-Very simple example project for `react-server` which only shows server rendering
-and interactivity on the client side.
+Very simple example project for `react-server` which only shows server rendering and interactivity on the client side.
 
 To start in development mode:
 

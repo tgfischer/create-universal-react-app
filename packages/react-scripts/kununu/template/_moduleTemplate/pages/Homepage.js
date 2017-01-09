@@ -3,7 +3,7 @@ import HelloWorld from "../components/HelloWorld";
 
 export default class Homepage {
     getElements() {
-        return <HelloWorld/>;
+        return <HelloWorld />;
     }
 
     getMetaTags() {
