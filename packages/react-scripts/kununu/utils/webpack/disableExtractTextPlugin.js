@@ -1,10 +1,8 @@
 const getLoaders = require("./getLoaders");
-// Since the webpack.config is created by react-server-cli, we need to use their extract-text-webpack-plugin
-const ExtractTextPlugin = require("react-server-cli/node_modules/extract-text-webpack-plugin");
+const resolveFromReactServerCli = require("./resolveFromReactServerCli");
+const ExtractTextPlugin = require(resolveFromReactServerCli("extract-text-webpack-plugin"));
 
-const isDev = process.env.NODE_ENV === "development";
-
-function patchExtractText(webpackConfig) {
+function disableExtractText(webpackConfig) {
     const plugins = webpackConfig.plugins;
     
     if (Array.isArray(plugins) === false) {
@@ -17,7 +15,7 @@ function patchExtractText(webpackConfig) {
         throw new Error("Could not find ExtractTextWebpackPlugin in webpack config");
     }
     
-    extractTextPlugin.options.disable = isDev;
+    extractTextPlugin.options.disable = true;
 }
 
-module.exports = patchExtractText;
+module.exports = disableExtractText;

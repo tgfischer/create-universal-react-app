@@ -16,6 +16,8 @@ const patchLoaders = createPatchLoaders(needsCompliation);
 const patchResolve = require("../utils/webpack/patchResolve");
 const patchBabelLoader = require("../utils/webpack/patchBabelLoader");
 const patchSassLoader = require("../utils/webpack/patchSassLoader");
+const disableExtractTextPlugin = require("../utils/webpack/disableExtractTextPlugin");
+const removeCssNoopPlugin = require("../utils/webpack/removeCssNoopPlugin");
 
 function webpackServerConfig(webpackConfig) {
     // The current react-server-cli branch sets this on true which renders ugly error messages in our console
@@ -27,6 +29,8 @@ function webpackServerConfig(webpackConfig) {
     patchBabelLoader(webpackConfig);
     patchSassLoader.server(webpackConfig);
     patchResolve(webpackConfig);
+    disableExtractTextPlugin(webpackConfig);
+    removeCssNoopPlugin(webpackConfig);
 
     return webpackConfig;
 }
