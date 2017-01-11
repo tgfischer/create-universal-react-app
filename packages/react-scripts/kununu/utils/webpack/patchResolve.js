@@ -14,6 +14,9 @@ function patchResolve(webpackConfig) {
     webpackConfig.resolve.root = [
         path.resolve(process.cwd(), "node_modules")
     ];
+    
+    // @see react-scripts/config/webpack.config.prod.js
+    webpackConfig.resolve.extensions = [".js", ".json", ".jsx", ""];
 }
 
 module.exports = patchResolve;
