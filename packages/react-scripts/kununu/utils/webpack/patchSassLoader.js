@@ -1,6 +1,6 @@
 const getLoaders = require("./getLoaders");
-// Since the webpack.config is created by react-server-cli, we need to use their extract-text-webpack-plugin
-const ExtractTextPlugin = require("react-server-cli/node_modules/extract-text-webpack-plugin");
+const resolveFromReactServerCli = require("./resolveFromReactServerCli");
+const ExtractTextPlugin = require(resolveFromReactServerCli("extract-text-webpack-plugin"));
 
 function getCssModulesLoaderConfig(isNodeTarget) {
     return [
