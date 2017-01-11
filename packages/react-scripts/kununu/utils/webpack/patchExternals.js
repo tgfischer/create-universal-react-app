@@ -1,9 +1,9 @@
-const resolve = require("resolve");
 const needsCompilation = require("./needsCompilation");
 
 function createPatchExternals(resolve) {
     function externals(context, request, callback) {
         let absoluteRequest;
+
         try {
             // Make it possible to require dependencies that are only installed within an app-module
             // Note: This is only for development mode.
@@ -29,7 +29,7 @@ function createPatchExternals(resolve) {
 
     return function patchExternals(webpackConfig) {
         webpackConfig.externals = externals;
-    }
+    };
 }
 
 module.exports = createPatchExternals;
