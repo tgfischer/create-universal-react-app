@@ -9,7 +9,9 @@
 // So this is the only option to do that.
 global.Intl = require("intl");
 
-const patchExternals = require("../utils/webpack/patchExternals");
+const resolve = require("resolve");
+const createPatchExternals = require("../utils/webpack/patchExternals");
+const patchExternals = createPatchExternals(resolve);
 const needsCompliation = require("../utils/webpack/needsCompilation");
 const createPatchLoaders = require("../utils/webpack/patchLoaders");
 const patchLoaders = createPatchLoaders(needsCompliation);
