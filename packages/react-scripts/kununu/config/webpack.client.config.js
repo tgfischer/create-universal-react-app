@@ -4,6 +4,7 @@ const patchLoaders = createPatchLoaders(needsCompilation);
 const patchResolve = require("../utils/webpack/patchResolve");
 const patchBabelLoader = require("../utils/webpack/patchBabelLoader");
 const patchSassLoader = require("../utils/webpack/patchSassLoader");
+const patchCssLoader = require("../utils/webpack/patchCssLoader");
 const disableExtractTextPlugin = require("../utils/webpack/disableExtractTextPlugin");
 
 function webpackClientConfig(webpackConfig) {
@@ -14,9 +15,10 @@ function webpackClientConfig(webpackConfig) {
     // This can be removed when the react-server-cli branch has been fixed
     webpackConfig.profile = false;
 
-    patchLoaders(webpackConfig);
-    patchBabelLoader(webpackConfig);
+    patchCssLoader.client(webpackConfig);
     patchSassLoader.client(webpackConfig);
+    patchBabelLoader(webpackConfig);
+    patchLoaders(webpackConfig);
     patchResolve(webpackConfig);
     if (hotIsEnabled) {
         disableExtractTextPlugin(webpackConfig);

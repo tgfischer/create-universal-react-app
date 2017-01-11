@@ -2,6 +2,8 @@ const getLoaders = require("./getLoaders");
 const resolveFromReactServerCli = require("./resolveFromReactServerCli");
 const ExtractTextPlugin = require(resolveFromReactServerCli("extract-text-webpack-plugin"));
 
+const expectedTestRegExp = /\.s(a|c)ss$/;
+
 function getCssModulesLoaderConfig(isNodeTarget) {
     return [
         `css-loader${ isNodeTarget ? "/locals" : "" }?` + JSON.stringify({
@@ -13,9 +15,13 @@ function getCssModulesLoaderConfig(isNodeTarget) {
     ].join("!");
 }
 
+function isSassLoader(loader) {
+    return loader.test.toString() === expectedTestRegExp.toString();
+}
+
 function getSassLoader(webpackConfig) {
     const loaders = getLoaders(webpackConfig);
-    const sassLoader = loaders.filter(loader => /sass-loader$/.test(loader.loader))[0];
+    const sassLoader = loaders.filter(isSassLoader)[0];
     
     if (!sassLoader) {
         throw new Error("Could not find sass-loader in webpack config");

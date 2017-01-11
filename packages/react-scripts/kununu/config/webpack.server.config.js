@@ -12,12 +12,13 @@ global.Intl = require("intl");
 const resolve = require("resolve");
 const createPatchExternals = require("../utils/webpack/patchExternals");
 const patchExternals = createPatchExternals(resolve);
-const needsCompliation = require("../utils/webpack/needsCompilation");
+const needsCompilation = require("../utils/webpack/needsCompilation");
 const createPatchLoaders = require("../utils/webpack/patchLoaders");
-const patchLoaders = createPatchLoaders(needsCompliation);
+const patchLoaders = createPatchLoaders(needsCompilation);
 const patchResolve = require("../utils/webpack/patchResolve");
 const patchBabelLoader = require("../utils/webpack/patchBabelLoader");
 const patchSassLoader = require("../utils/webpack/patchSassLoader");
+const patchCssLoader = require("../utils/webpack/patchCssLoader");
 const disableExtractTextPlugin = require("../utils/webpack/disableExtractTextPlugin");
 const removeCssNoopPlugin = require("../utils/webpack/removeCssNoopPlugin");
 
@@ -26,10 +27,11 @@ function webpackServerConfig(webpackConfig) {
     // This can be removed when the react-server-cli branch has been fixed
     webpackConfig.profile = false;
 
-    patchExternals(webpackConfig, needsCompliation);
-    patchLoaders(webpackConfig);
-    patchBabelLoader(webpackConfig);
+    patchCssLoader.server(webpackConfig);
     patchSassLoader.server(webpackConfig);
+    patchBabelLoader(webpackConfig);
+    patchLoaders(webpackConfig);
+    patchExternals(webpackConfig, needsCompilation);
     patchResolve(webpackConfig);
     disableExtractTextPlugin(webpackConfig);
     removeCssNoopPlugin(webpackConfig);
