@@ -10,7 +10,9 @@
 global.Intl = require("intl");
 
 const patchExternals = require("../utils/webpack/patchExternals");
-const patchLoaderIncludes = require("../utils/webpack/patchLoaderIncludes");
+const needsCompliation = require("../utils/webpack/needsCompilation");
+const createPatchLoaders = require("../utils/webpack/patchLoaders");
+const patchLoaders = createPatchLoaders(needsCompliation);
 const patchResolve = require("../utils/webpack/patchResolve");
 const patchBabelLoader = require("../utils/webpack/patchBabelLoader");
 const patchSassLoader = require("../utils/webpack/patchSassLoader");
@@ -20,8 +22,8 @@ function webpackServerConfig(webpackConfig) {
     // This can be removed when the react-server-cli branch has been fixed
     webpackConfig.profile = false;
 
-    patchExternals(webpackConfig);
-    patchLoaderIncludes(webpackConfig);
+    patchExternals(webpackConfig, needsCompliation);
+    patchLoaders(webpackConfig);
     patchBabelLoader(webpackConfig);
     patchSassLoader.server(webpackConfig);
     patchResolve(webpackConfig);

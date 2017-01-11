@@ -1,4 +1,6 @@
-const patchLoaderIncludes = require("../utils/webpack/patchLoaderIncludes");
+const needsCompilation = require("../utils/webpack/needsCompilation");
+const createPatchLoaders = require("../utils/webpack/patchLoaders");
+const patchLoaders = createPatchLoaders(needsCompilation);
 const patchResolve = require("../utils/webpack/patchResolve");
 const patchBabelLoader = require("../utils/webpack/patchBabelLoader");
 const patchSassLoader = require("../utils/webpack/patchSassLoader");
@@ -9,7 +11,7 @@ function webpackClientConfig(webpackConfig) {
     // This can be removed when the react-server-cli branch has been fixed
     webpackConfig.profile = false;
 
-    patchLoaderIncludes(webpackConfig);
+    patchLoaders(webpackConfig);
     patchBabelLoader(webpackConfig);
     patchSassLoader.client(webpackConfig);
     patchResolve(webpackConfig);
