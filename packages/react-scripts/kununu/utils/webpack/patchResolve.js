@@ -15,7 +15,8 @@ function patchResolve(webpackConfig) {
         path.resolve(process.cwd(), "node_modules")
     ];
     
-    // @see react-scripts/config/webpack.config.prod.js
+    // Copied from react-scripts in the base create-react-app
+    // https://github.com/facebookincubator/create-react-app/blob/f4c3f8b6d8788d1214cc2221ed010623f83255e7/packages/react-scripts/config/webpack.config.prod.js#L93-L97
     webpackConfig.resolve.extensions = [".js", ".json", ".jsx", ""];
 }
 
