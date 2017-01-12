@@ -67,7 +67,7 @@
     "json-loader": "0.5.4",
     "object-assign": "4.1.0",
     "postcss-import": "8.2.0",
-    "postcss-loader": "1.0.0",
+    "postcss-loader": "1.2.2",
     "postcss-nested": "1.0.0",
     "postcss-simple-vars": "3.0.0",
     "promise": "7.1.1",

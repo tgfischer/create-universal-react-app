@@ -1,6 +1,7 @@
 const getLoaders = require("./getLoaders");
 const resolveFromReactServerCli = require("./resolveFromReactServerCli");
 const ExtractTextPlugin = require(resolveFromReactServerCli("extract-text-webpack-plugin"));
+const pathToPostCssConfig = require.resolve("../../config/postcss.config.js");
 
 const expectedTestRegExp = /\.s(a|c)ss$/;
 
@@ -10,7 +11,9 @@ function getCssModulesLoaderConfig(isNodeTarget) {
             modules: true,
             importLoaders: 1
         }),
-        "postcss-loader",
+        "postcss-loader?" + JSON.stringify({
+            config: pathToPostCssConfig
+        }),
         "sass-loader"
     ].join("!");
 }
