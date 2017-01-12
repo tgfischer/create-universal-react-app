@@ -13,7 +13,6 @@ function getCssModulesLoaderConfig (isNodeTarget) {
     `postcss-loader?${JSON.stringify({
       config: pathToPostCssConfig,
     })}`,
-    'sass-loader',
   ].join('!');
 }
 

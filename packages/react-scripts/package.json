@@ -70,6 +70,8 @@
     "postcss-import": "8.2.0",
     "postcss-loader": "1.2.2",
     "postcss-nested": "1.0.0",
+    "postcss-omit-import-tilde": "1.0.1",
+    "postcss-partial-import": "3.1.0",
     "postcss-simple-vars": "3.0.0",
     "promise": "7.1.1",
     "react-dev-utils": "^0.4.2",
