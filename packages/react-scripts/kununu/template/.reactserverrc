@@ -1,0 +1,10 @@
+{
+  "routesFile": "./routes.js",
+  "webpackClientConfig": "./config/webpack.client.config.js",
+  "webpackServerConfig": "./config/webpack.server.config.js",
+  "env": {
+    "development": {
+      "port": "3000"
+    }
+  }
+}
