@@ -1,6 +1,6 @@
 {
   "name": "@kununu/react-universal-scripts",
-  "version": "0.8.4-prerelease.8",
+  "version": "0.8.4-prerelease.9",
   "publishConfig": {
     "access": "public"
   },
@@ -80,8 +80,8 @@
     "react-dev-utils": "^0.4.2",
     "react-intl": "2.2.2",
     "react-redux": "5.0.2",
-    "react-server": "https://github.com/jhnns/react-server.git",
-    "react-server-cli": "https://github.com/jhnns/react-server-cli.git",
+    "react-server": "jhnns/react-server#6251d5c9469f3c5c97a6fb4a1f677fdc1b7fff79",
+    "react-server-cli": "jhnns/react-server-cli#f95891bad519a2d7410a1beb12e2b4207e5853e7",
     "recursive-readdir": "2.1.0",
     "redux": "3.6.0",
     "redux-translations": "kununu/redux-translations#master",
