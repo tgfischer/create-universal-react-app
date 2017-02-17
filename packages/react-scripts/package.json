@@ -80,7 +80,7 @@
     "react-dev-utils": "^0.4.2",
     "react-intl": "2.2.2",
     "react-redux": "5.0.2",
-    "react-server": "jhnns/react-server#6251d5c9469f3c5c97a6fb4a1f677fdc1b7fff79",
+    "react-server": "jhnns/react-server#7525c989551c1fe6d27e847b8fa708036cda6dfc",
     "react-server-cli": "jhnns/react-server-cli#fb4c0664766023221a0d3523f1613b8e2756d1d7",
     "recursive-readdir": "2.1.0",
     "redux": "3.6.0",
