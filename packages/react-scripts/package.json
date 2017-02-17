@@ -1,6 +1,6 @@
 {
   "name": "@kununu/react-universal-scripts",
-  "version": "0.8.4-prerelease.11",
+  "version": "0.8.4-prerelease.12",
   "publishConfig": {
     "access": "public"
   },
