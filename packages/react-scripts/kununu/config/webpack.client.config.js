@@ -6,13 +6,13 @@ const patchResolve = require('../utils/webpack/patchResolve');
 const patchBabelLoader = require('../utils/webpack/patchBabelLoader');
 const patchSassLoader = require('../utils/webpack/patchSassLoader');
 const patchCssLoader = require('../utils/webpack/patchCssLoader');
+const patchESLintLoader = require('../utils/webpack/patchESLintLoader');
 const disableExtractTextPlugin = require('../utils/webpack/disableExtractTextPlugin');
 
 module.exports = function webpackClientConfig (webpackConfig) {
   // This check is not really correct because we actually needed to check for the hot-option. Unfortunately, we can't access
   // these configuration values here, so let's assume that NODE_ENV = "development" roughly equals the hot-option.
   const hotIsEnabled = process.env.NODE_ENV === 'development';
-
   // The current react-server-cli branch sets this on true which renders ugly error messages in our console
   // This can be removed when the react-server-cli branch has been fixed
   webpackConfig.profile = false;
@@ -28,6 +28,7 @@ module.exports = function webpackClientConfig (webpackConfig) {
 
   if (hotIsEnabled) {
     disableExtractTextPlugin(webpackConfig);
+    patchESLintLoader(webpackConfig);
   }
 
   return webpackConfig;
