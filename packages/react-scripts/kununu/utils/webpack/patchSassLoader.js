@@ -7,7 +7,7 @@ const pathToPostCssConfig = require.resolve('../../config/postcss.config.js');
 function getCssModulesLoaderConfig (isNodeTarget) {
   return [
     `css-loader${isNodeTarget ? '/locals' : ''}?${JSON.stringify({
-      modules: true,
+      modules: false,
       importLoaders: 1,
     })}`,
     `postcss-loader?${JSON.stringify({

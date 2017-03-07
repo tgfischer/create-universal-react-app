@@ -12,10 +12,10 @@ function patchCssLoader ({webpackConfig, isNodeTarget}) {
   }
 
   cssLoader.loader = isNodeTarget ?
-    'css-loader' :
+    'css?modules&localIdentName=[name]---[local]---[hash:base64:5]' :
     ExtractTextPlugin.extract(
       'style-loader',
-      'css-loader'
+      'css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]'
     );
 }
 

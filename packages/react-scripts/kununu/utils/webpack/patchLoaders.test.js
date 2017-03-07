@@ -150,12 +150,10 @@ test('test returns false if original test does not match', () => {
       ],
     },
   };
-  const absolutePathToNukleusInIntegrationAppCss = '/Users/$USER/workspace/integration-app/node_modules/nukleus/dist/main.css';
   const absolutePathToNukleuesInAppModule = '/Users/$USER/workspace/integration-app/node_modules/@kununu/app-module/node_modules/nukleus/dist/index.js';
 
   patchLoaders(webpackConfig);
 
-  expect(babelLoader.test(absolutePathToNukleusInIntegrationAppCss)).toBe(false);
   expect(cssLoader.test(absolutePathToNukleuesInAppModule)).toBe(false);
 });
 

@@ -12,14 +12,11 @@ test("returns true if module path does not contain 'node_modules'", () => {
 
 test('returns true if module is nukleus', () => {
   const absolutePathToNukleusInIntegrationApp = '/Users/$USER/workspace/integration-app/node_modules/nukleus/dist/index.js';
-  const absolutePathToNukleusInIntegrationAppCss = '/Users/$USER/workspace/integration-app/node_modules/nukleus/dist/main.css';
+
   const absolutePathToNukleuesInAppModule = '/Users/$USER/workspace/integration-app/node_modules/@kununu/app-module/node_modules/nukleus/dist/index.js';
-  const absolutePathToNukleuesInAppModuleCss = '/Users/$USER/workspace/integration-app/node_modules/@kununu/app-module/node_modules/nukleus/dist/main.css';
 
   expect(needsCompilation(absolutePathToNukleusInIntegrationApp)).toBe(true);
-  expect(needsCompilation(absolutePathToNukleusInIntegrationAppCss)).toBe(true);
   expect(needsCompilation(absolutePathToNukleuesInAppModule)).toBe(true);
-  expect(needsCompilation(absolutePathToNukleuesInAppModuleCss)).toBe(true);
 });
 
 test('test returns true if is app module', () => {
